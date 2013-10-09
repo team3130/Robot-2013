@@ -11,3 +11,12 @@
 *.lai
 *.la
 *.a
+
+# Windriver files
+.cproject
+.project
+.wrmakefile
+.wrproject
+
+# Robot Object Files
+PPC603gnu/
