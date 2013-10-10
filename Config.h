@@ -34,7 +34,7 @@ namespace conf{
 	void init(){
 		SmartDashboard::PutNumber("Shooter Low", 4.5);
 		SmartDashboard::PutNumber("Shooter Med", 6.0);
-		SmartDashboard::PutNumber("Shooter High", 8.0);
+		SmartDashboard::PutNumber("Shooter High", 9.5);
 		SmartDashboard::PutNumber("Shooter Off", -0.5);
 		SmartDashboard::PutNumber("Robot Speed", 1.0);
 		SmartDashboard::PutNumber("Precision Speed", 0.2);
