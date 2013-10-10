@@ -9,7 +9,7 @@ double clampf(double val, double low, double high);
 
 class Shooter {
 public:
-	
+
 	Shooter(Motor* l, Motor* r, Solenoid* s, bool invleft, bool invright) {
 		lmult = invleft ? -1 : 1;
 		rmult = invright ? -1 : 1;
@@ -18,7 +18,7 @@ public:
 		right = r;
 		speed = 0.0;
 		indexer = s;
-		voltagecontrol=true;
+		voltagecontrol = true;
 	}
 
 private:
@@ -34,10 +34,10 @@ public:
 	void enable() {
 		enabled = true;
 	}
-	void setVoltageControl(bool in){
+	void setVoltageControl(bool in) {
 		voltagecontrol = in;
 	}
-	bool isVoltageControl(){
+	bool isVoltageControl() {
 		return voltagecontrol;
 	}
 	void disable() {
@@ -72,12 +72,15 @@ public:
 		return speed * rmult;
 	}
 	void setInversions(bool leftInv, bool rightInv) {
-		if (leftInv) lmult = -fabs(lmult);
-		if (rightInv) rmult = -fabs(rmult);
+		if (leftInv)
+			lmult = -fabs(lmult);
+		if (rightInv)
+			rmult = -fabs(rmult);
 	}
 	void update() {
-		float temp=speed;
-		if(voltagecontrol)temp/=PWM_VOLT;
+		float temp = speed;
+		if (voltagecontrol)
+			temp /= PWM_VOLT;
 		left->Set(temp);
 		right->Set(temp);
 	}
@@ -85,32 +88,30 @@ public:
 		enable();
 	}
 	double handleSpeeds(bool X, bool A, bool B, bool Y, bool LT, bool RT) {
-		using namespace conf;
 		static bool lastA = false;
 		static bool lastB = false;
 		static bool lastX = false;
 		static bool lastY = false;
 		if (A > lastA) {
-			if(speed<0)speed=0;
-			else speed=-2.f;
+			if (speed < 0)
+				speed = 0;
+			else
+				speed = SHOOTER_OFF;
 		}
 		if (B > lastB) {
-			if (distf(speed, getShooterSpeed("low")<1.f))
-				speed = 0;
-			else
-				speed = getShooterSpeed("low");
+			speed = SHOOTER_LOW;
 		}
 		if (X > lastX) {
-			if (speed>0)
+			if (speed > 0)
 				speed = 0;
 			else
-				speed = getShooterSpeed("med");
+				speed = SHOOTER_MED;
 		}
 		if (Y > lastY) {
-			if (speed>0)
+			if (speed > 0)
 				speed = 0;
 			else
-				speed = getShooterSpeed("high");
+				speed = SHOOTER_HIGH;
 		}
 		lastA = A;
 		lastB = B;

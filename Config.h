@@ -14,41 +14,17 @@
 #endif
 #define CONSOLE(msg) //printf(msg)
 	
-namespace conf{
+#define prefs_config	
 
-	float getShooterSpeed(char* descriptor){
-		if(descriptor=="low"||descriptor=="LOW")return SmartDashboard::GetNumber("Shooter Low");
-		if(descriptor=="med"||descriptor=="MED")return SmartDashboard::GetNumber("Shooter Med");
-		if(descriptor=="high"||descriptor=="HIGH")return SmartDashboard::GetNumber("Shooter High");
-		if(descriptor=="off"||descriptor=="OFF")return SmartDashboard::GetNumber("Shooter Off");
-		printf("WARNING: ");
-		printf("invalid input to getShooterSpeed [%s]\n",descriptor);
-		return 0;
-	}
-	float getSpeed(){
-		return SmartDashboard::GetNumber("Robot Speed");
-	}
-	float getPrecSpeed(){
-		return SmartDashboard::GetNumber("Precision Speed");
-	}
-	void init(){
-		SmartDashboard::PutNumber("Shooter Low", 4.5);
-		SmartDashboard::PutNumber("Shooter Med", 6.0);
-		SmartDashboard::PutNumber("Shooter High", 8.0);
-		SmartDashboard::PutNumber("Shooter Off", -1.0);
-		SmartDashboard::PutNumber("Robot Speed", 1.0);
-		SmartDashboard::PutNumber("Precision Speed", 0.2);
-	}
-	
-	float distf(float a, float b){
-		printf("<%2.2f>\n", fabs(a-b));
-		return fabs(a-b);
-	}
-	
+#ifdef static_config
 	
 	#define WINCH_UP_MULT 0.4 // The multiplier to use when the winch is moving up
-	
 		
+	#define SHOOTER_OFF -0.5
+	#define SHOOTER_lOW 4.0
+	#define SHOOTER_MED 6.0
+	#define SHOOTER_HIGH 9.5
+	
 	#define AUTO_DELAY1 7.0 // Delay before first disc is shot
 	#define AUTO_DELAY2 7.5 // Delay before retracting the indexer
 	#define AUTO_DELAY3 9.0 // Delay before second disc is shot
@@ -59,5 +35,31 @@ namespace conf{
 	#define AUTO_SHOOTER_SPEED 	(9.5/PWM_VOLT)
 		
 	#define PRECISIONMODE_MULT 0.5
-};
+	
+#endif
+
+#ifdef prefs_config
+	
+static Preferences* prefs = Preferences::GetInstance();	
+	
+	#define WINCH_UP_MULT prefs->GetDouble("Winch_Up_Mult") // The multiplier to use when the winch is moving up
+		
+	#define SHOOTER_OFF prefs->GetDouble("Shooter_OFF")
+	#define SHOOTER_LOW prefs->GetDouble("Shooter_LOW")
+	#define SHOOTER_MED prefs->GetDouble("Shooter_MEDIUM")
+	#define SHOOTER_HIGH prefs->GetDouble("Shooter_HIGH")
+	
+	#define AUTO_DELAY1 prefs->GetDouble("Auto_Delay_1") // Delay before first disc is shot
+	#define AUTO_DELAY2 prefs->GetDouble("Auto_Delay_2") // Delay before retracting the indexer
+	#define AUTO_DELAY3 prefs->GetDouble("Auto_Delay_3") // Delay before second disc is shot
+	#define AUTO_DELAY4 prefs->GetDouble("Auto_Delay_4") // Delay before retracting the indexer
+	#define AUTO_DELAY5 prefs->GetDouble("Auto_Delay_5") // Delay before third disc is shot
+	#define AUTO_DELAY6 prefs->GetDouble("Auto_Delay_6") // Delay before retracting the indexer
+	#define AUTO_DELAY7 prefs->GetDouble("Auto_Delay_7") // Delay before shooter is turned off
+	#define AUTO_SHOOTER_SPEED 	prefs->GetDouble("Auto_Shooter_Speed")
+		
+	#define PRECISIONMODE_MULT prefs->GetDouble("Precision_Mode_Mult")
+	
+#endif
+	
 #endif //CONFIG_H
