@@ -35,7 +35,7 @@ namespace conf{
 		SmartDashboard::PutNumber("Shooter Low", 4.5);
 		SmartDashboard::PutNumber("Shooter Med", 6.0);
 		SmartDashboard::PutNumber("Shooter High", 8.0);
-		SmartDashboard::PutNumber("Shooter Off", -1.0);
+		SmartDashboard::PutNumber("Shooter Off", -0.5);
 		SmartDashboard::PutNumber("Robot Speed", 1.0);
 		SmartDashboard::PutNumber("Precision Speed", 0.2);
 	}
@@ -56,7 +56,7 @@ namespace conf{
 	#define AUTO_DELAY5 11.0 // Delay before third disc is shot
 	#define AUTO_DELAY6 11.5 // Delay before retracting the indexer
 	#define AUTO_DELAY7 14.0 // Delay before shooter is turned off
-	#define AUTO_SHOOTER_SPEED 	(9.5/PWM_VOLT)
+	#define AUTO_SHOOTER_SPEED 	(9.5)
 		
 	#define PRECISIONMODE_MULT 0.5
 };
