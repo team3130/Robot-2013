@@ -95,19 +95,19 @@ public:
 			else speed=-2.f;
 		}
 		if (B > lastB) {
-			if (distf(speed, getShooterSpeed("low")<1.f))
+			if (distf(speed, getShooterSpeed("low"))<0.5)
 				speed = 0;
 			else
 				speed = getShooterSpeed("low");
 		}
 		if (X > lastX) {
-			if (distf(speed, getShooterSpeed("med")<1.f))
+			if (distf(speed, getShooterSpeed("med"))<0.5)
 				speed = 0;
 			else
 				speed = getShooterSpeed("med");
 		}
 		if (Y > lastY) {
-			if (distf(speed, getShooterSpeed("high")<1.f))
+			if (distf(speed, getShooterSpeed("high"))<0.5)
 				speed = 0;
 			else
 				speed = getShooterSpeed("high");
