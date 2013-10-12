@@ -101,13 +101,13 @@ public:
 				speed = getShooterSpeed("low");
 		}
 		if (X > lastX) {
-			if (speed>0)
+			if (distf(speed, getShooterSpeed("med")<1.f))
 				speed = 0;
 			else
 				speed = getShooterSpeed("med");
 		}
 		if (Y > lastY) {
-			if (speed>0)
+			if (distf(speed, getShooterSpeed("high")<1.f))
 				speed = 0;
 			else
 				speed = getShooterSpeed("high");
