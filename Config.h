@@ -12,9 +12,13 @@
 	#define PWM_VOLT 1.0 // Disable voltage dividers: using voltage control
 	typedef CANJaguar Motor;
 #endif
-#define CONSOLE(msg) //printf(msg)
-	
 
+#define CONSOLE(msg) //printf(msg)
+
+#define config_prefs
+// #define config_static
+	
+#ifdef config_static
 	
 	#define WINCH_UP_MULT 0.4 // The multiplier to use when the winch is moving up
 		
@@ -36,9 +40,9 @@
 	
 #endif
 
-#ifdef prefs_config
+#ifdef config_prefs
 	
-static Preferences* prefs = Preferences::GetInstance();	
+	static Preferences* prefs = Preferences::GetInstance();	
 	
 	#define WINCH_UP_MULT prefs->GetDouble("Winch_Up_Mult") // The multiplier to use when the winch is moving up
 		
