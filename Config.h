@@ -14,9 +14,7 @@
 #endif
 #define CONSOLE(msg) //printf(msg)
 	
-#define prefs_config	
 
-#ifdef static_config
 	
 	#define WINCH_UP_MULT 0.4 // The multiplier to use when the winch is moving up
 		
