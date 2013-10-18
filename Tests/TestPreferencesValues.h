@@ -2,9 +2,10 @@
 #define _TESTPREFERENCESVALUES_H
 
 #include "Test.h"
-#include "Robot.h"
+#include "../Robot.h"
 
 class TestPreferencesValues : public Test {
+public:
 	explicit TestPreferencesValues() : Test("Test Preferences Values") {
 	}
 	void Run() {
@@ -14,7 +15,7 @@ class TestPreferencesValues : public Test {
 			x = Robot::prefs->GetDouble("Shooter_Med");
 			x = Robot::prefs->GetDouble("Shooter_High");
 		} catch (Error* e) {
-			Message = e->GetMessage();
+			Message = (char*)e->GetMessage();
 			status = Fail;
 		}
 	}	

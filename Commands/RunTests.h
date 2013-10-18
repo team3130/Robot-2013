@@ -24,6 +24,7 @@
  * @author ExampleAuthor
  */
 class RunTests: public Command {
+	TestManager* tm;
 public:
 	RunTests();
 	virtual void Initialize();
