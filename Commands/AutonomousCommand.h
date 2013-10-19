@@ -21,6 +21,8 @@
 #include "../Commands/SpeedOff.h"
 #include "../Commands/Shoot.h"
 #include "../Commands/LightsAutoBegin.h"
+#include "../Commands/LightsSpinUp.h"
+#include "../Commands/LightsSpinDown.h"
 
 /**
  *
