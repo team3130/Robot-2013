@@ -9,6 +9,7 @@
 // it from being updated in th future.
 #include "Drivetrain.h"
 #include "../Robotmap.h"
+#include "../Commands/DriveWithJoysticks.h"
 Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 	robotDrive = RobotMap::drivetrainRobotDrive;
 	gyro = RobotMap::drivetrainGyro;
@@ -16,6 +17,11 @@ Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 	leftRear = RobotMap::drivetrainLeftRear;
 	rightFront = RobotMap::drivetrainRightFront;
 	rightRear = RobotMap::drivetrainRightRear;
+	
+	multiplier = 0.0f;
+	
+	robotDrive->SetExpiration(0.5f);
+	robotDrive->SetSafetyEnabled(true);
 }
     
 void Drivetrain::InitDefaultCommand() {
@@ -28,9 +34,13 @@ void Drivetrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Drivetrain::TakeJoystickInputs(Joystick* left, Joystick* right) {
-	robotDrive->TankDrive(left, right);
+	robotDrive->TankDrive(left->GetY() * multiplier, right->GetY() * multiplier);
 }
 
 void Drivetrain::Stop() {
 	robotDrive->Drive(0, 0);
+}
+
+void Drivetrain::SetMultiplier(float mult) {
+	multiplier = mult;
 }

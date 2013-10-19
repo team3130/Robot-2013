@@ -28,3 +28,13 @@ void Lights::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+void Lights::SetMode(Mode mode) {
+	unsigned int val = (unsigned int)mode;
+	bool b1 = val%2;
+	bool b2 = (val/2)%2;
+	bool b3 = (val/4)%2;
+	digitalOutput1->Set(b1);
+	digitalOutput2->Set(b2);
+	digitalOutput3->Set(b3);
+}

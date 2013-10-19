@@ -24,3 +24,11 @@ void Tape::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+bool Tape::GetHomeStatus() {
+	return tapeLimitSwitch;
+}
+
+void Tape::MoveTape(float speed) {
+	tape->Set(speed);
+}
