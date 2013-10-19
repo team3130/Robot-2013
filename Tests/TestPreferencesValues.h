@@ -14,6 +14,7 @@ public:
 			x = Robot::prefs->GetDouble("Shooter_Low");
 			x = Robot::prefs->GetDouble("Shooter_Med");
 			x = Robot::prefs->GetDouble("Shooter_High");
+			x = Robot::prefs->GetFloat("Precision_Multipiler");
 		} catch (Error* e) {
 			Message = (char*)e->GetMessage();
 			status = Fail;

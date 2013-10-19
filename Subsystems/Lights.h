@@ -17,9 +17,6 @@
  * @author ExampleAuthor
  */
 class Lights: public Subsystem {
-private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 public:
 	
 	enum Mode {
@@ -42,5 +39,11 @@ public:
 	Lights();
 	void InitDefaultCommand();
 	void SetMode(Mode);
+	Mode GetMode();
+	
+private:
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
+	Mode m_mode;
 };
 #endif

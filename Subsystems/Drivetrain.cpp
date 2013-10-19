@@ -18,7 +18,7 @@ Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 	rightFront = RobotMap::drivetrainRightFront;
 	rightRear = RobotMap::drivetrainRightRear;
 	
-	multiplier = 0.0f;
+	multiplier = 1.0f;
 	
 	robotDrive->SetExpiration(0.5f);
 	robotDrive->SetSafetyEnabled(true);

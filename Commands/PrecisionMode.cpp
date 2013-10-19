@@ -17,7 +17,7 @@ PrecisionMode::PrecisionMode() {
 }
 // Called just before this Command runs the first time
 void PrecisionMode::Initialize() {
-	
+	Robot::drivetrain->SetMultiplier(Robot::prefs->GetFloat("Precision_Multipiler"));
 }
 // Called repeatedly when this Command is scheduled to run
 void PrecisionMode::Execute() {
@@ -34,4 +34,5 @@ void PrecisionMode::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void PrecisionMode::Interrupted() {
+	Robot::drivetrain->SetMultiplier(1.0f);
 }

@@ -30,7 +30,6 @@ Compressor* RobotMap::compressorSystemCompressor = NULL;
 DigitalOutput* RobotMap::lightsDigitalOutput1 = NULL;
 DigitalOutput* RobotMap::lightsDigitalOutput2 = NULL;
 DigitalOutput* RobotMap::lightsDigitalOutput3 = NULL;
-DigitalOutput* RobotMap::lightsDigitalOutput4 = NULL;
 
 
 void RobotMap::init() {

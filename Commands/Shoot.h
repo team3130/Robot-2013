@@ -22,6 +22,7 @@
  * @author ExampleAuthor
  */
 class Shoot: public Command {
+	Lights::Mode m_mode;
 public:
 	Shoot();
 	virtual void Initialize();

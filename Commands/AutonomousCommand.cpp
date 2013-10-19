@@ -32,8 +32,8 @@ AutonomousCommand::AutonomousCommand() {
 	// arm.
 	
 	AddParallel(new EnableCompressor());
-	AddParallel(new LightsAutoBegin());
 	AddParallel(new SpeedAuto());
+	AddParallel(new LightsSpinUp());
 	AddSequential(new WaitCommand(7.0));
 	AddSequential(new Shoot());
 	AddSequential(new WaitCommand(1.5));
@@ -44,4 +44,5 @@ AutonomousCommand::AutonomousCommand() {
 	AddSequential(new Shoot());
 	AddSequential(new WaitCommand(2.5));
 	AddSequential(new SpeedOff());
+	AddSequential(new LightsSpinDown());
 }

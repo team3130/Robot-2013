@@ -20,6 +20,8 @@ Shoot::Shoot() {
 void Shoot::Initialize() {
 	if (Robot::shooter->IsRunning())
 		Robot::shooter->IndexerOut();
+	m_mode = Robot::lights->GetMode();
+	Robot::lights->SetMode(Lights::Fire);
 }
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
@@ -32,6 +34,7 @@ bool Shoot::IsFinished() {
 // Called once after isFinished returns true
 void Shoot::End() {
 	Robot::shooter->IndexerIn();
+	Robot::lights->SetMode(m_mode);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

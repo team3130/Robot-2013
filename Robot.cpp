@@ -46,6 +46,9 @@ void Robot::RobotInit() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Start();
+	lights->InitDefaultCommand();	// Make sure the team color is right
+	LightsAutoBegin autoLights = new LightsAutoBegin();
+	autoLights->Start();
 }
 	
 void Robot::AutonomousPeriodic() {
@@ -58,6 +61,8 @@ void Robot::TeleopInit() {
 	// continue until interrupted by another command, remove
 	// this line or comment it out.
 	autonomousCommand->Cancel();
+	LightsTeleStart teleLights = new LightsTeleStart();
+	teleLights->Start();
 }
 	
 void Robot::TeleopPeriodic() {
