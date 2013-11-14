@@ -14,6 +14,7 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Commands/AutonomousCommand.h"
+#include "Commands/DriveWithJoysticks.h"
 #include "Commands/LightsTeleStart.h"
 #include "Commands/LightsAutoBegin.h"
 #include "Subsystems/Arms.h"
@@ -27,6 +28,7 @@
 class Robot : public IterativeRobot {
 public:
 	Command *autonomousCommand;
+	Command *driveWithJoysticks;
 	static OI *oi;
 	LiveWindow *lw;
 	static Preferences *prefs;
