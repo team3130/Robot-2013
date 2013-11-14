@@ -33,22 +33,27 @@ DigitalOutput* RobotMap::lightsDigitalOutput3 = NULL;
 
 
 void RobotMap::init() {
-	drivetrainRobotDrive = new RobotDrive(drivetrainLeftFront, drivetrainRightRear, drivetrainRightFront, drivetrainLeftRear);
+	drivetrainRobotDrive = new RobotDrive(drivetrainLeftFront, drivetrainRightRear, drivetrainRightFront, drivetrainLeftRear);	
+	
 	LiveWindow* lw = LiveWindow::GetInstance();
 	drivetrainGyro = new Gyro(1, 1);
 	lw->AddSensor("Drivetrain", "Gyro", drivetrainGyro);
 	drivetrainGyro->SetSensitivity(0.007);
-	drivetrainLeftFront = new Jaguar(1, 2);
+	drivetrainLeftFront = new Jaguar(1, 4);
 	lw->AddActuator("Drivetrain", "LeftFront", (Jaguar*) drivetrainLeftFront);
 	
-	drivetrainLeftRear = new Jaguar(1, 3);
+	drivetrainLeftRear = new Jaguar(1, 5);
 	lw->AddActuator("Drivetrain", "LeftRear", (Jaguar*) drivetrainLeftRear);
 	
-	drivetrainRightFront = new Jaguar(1, 4);
+	drivetrainRightFront = new Jaguar(1, 2);
 	lw->AddActuator("Drivetrain", "RightFront", (Jaguar*) drivetrainRightFront);
 	
-	drivetrainRightRear = new Jaguar(1, 5);
+	drivetrainRightRear = new Jaguar(1, 3);
+	
 	lw->AddActuator("Drivetrain", "RightRear", (Jaguar*) drivetrainRightRear);
+	
+	drivetrainRobotDrive->SetInvertedMotor(drivetrainRobotDrive->kFrontRightMotor, false);
+	drivetrainRobotDrive->SetInvertedMotor(drivetrainRobotDrive->kRearRightMotor, false);
 	
 	shooterIndexer = new Solenoid(1, 7);
 	lw->AddActuator("Shooter", "Indexer", shooterIndexer);
@@ -56,10 +61,10 @@ void RobotMap::init() {
 	shooterFlipper = new Solenoid(1, 6);
 	lw->AddActuator("Shooter", "Flipper", shooterFlipper);
 	
-	shooterTopShooter = new Jaguar(1, 8);
+	shooterTopShooter = new Jaguar(1, 7);
 	lw->AddActuator("Shooter", "TopShooter", (Jaguar*) shooterTopShooter);
 	
-	shooterBottomShooter = new Jaguar(1, 7);
+	shooterBottomShooter = new Jaguar(1, 8);
 	lw->AddActuator("Shooter", "BottomShooter", (Jaguar*) shooterBottomShooter);
 	
 	winchWinch = new Talon(1, 1);
@@ -82,7 +87,5 @@ void RobotMap::init() {
 	lightsDigitalOutput2 = new DigitalOutput(1, 2);
 	
 	lightsDigitalOutput3 = new DigitalOutput(1, 3);
-	
-	lightsDigitalOutput4 = new DigitalOutput(1, 4);
 
 }

@@ -223,7 +223,7 @@
             <booleanAttribute key="BLD::Info|Tool|Partial Image Linker|object" value="false"/>
             <booleanAttribute key="BLD::Info|Tool|Partial Image Linker|passAble" value="true"/>
             <stringAttribute key="BLD::Info|Tool|Partial Image Linker|sigs" value=""/>
-            <stringAttribute key="BLD::Info|cmd" value="%makeprefix% make --no-print-directory -j 4"/>
+            <stringAttribute key="BLD::Info|cmd" value="%makeprefix% make --no-print-directory"/>
             <stringAttribute key="BLD::Info|defaultSpec" value="PPC603gnu"/>
             <stringAttribute key="BLD::Info|redirDir|PPC32diab" value="PPC32diab"/>
             <stringAttribute key="BLD::Info|redirDir|PPC32gnu" value="PPC32gnu"/>
@@ -246,12 +246,20 @@
     <buildtargets>
         <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
             <contents>
-                <folder name="/Robot-2013" recursive="true"/>
+                <folder name="/Robot-2013" recursive="true">
+                    <excludes>
+                        <folder name="Tests"/>
+                    </excludes>
+                </folder>
             </contents>
         </buildtarget>
         <buildtarget buildtool="Partial Image Linker" name="CommandBassedRobotTemplate_partialImage" passed="true" targetname="CommandBassedRobotTemplate_partialImage">
             <contents>
-                <folder name="/Robot-2013" recursive="true"/>
+                <folder name="/Robot-2013" recursive="true">
+                    <excludes>
+                        <folder name="Tests"/>
+                    </excludes>
+                </folder>
             </contents>
         </buildtarget>
     </buildtargets>
